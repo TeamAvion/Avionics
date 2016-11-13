@@ -11,6 +11,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.common.util.Constants;
 
 import javax.annotation.Nullable;
 
@@ -47,7 +48,7 @@ public class TileEntityNewWorkbench extends TileEntity implements IInventory {
 
     @Override
     public int getSizeInventory() {
-        return 11;
+        return 10;
     }
 
     @Override
@@ -161,8 +162,10 @@ public class TileEntityNewWorkbench extends TileEntity implements IInventory {
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
+        nbt = super.writeToNBT(nbt);
+
         NBTTagList list = new NBTTagList();
-        for (int i = 0; i < this.getSizeInventory(); ++i) {
+        for (int i = 0; i < this.getSizeInventory(); i++) {
             if (this.getStackInSlot(i) != null) {
                 NBTTagCompound stackTag = new NBTTagCompound();
                 stackTag.setByte("Slot", (byte) i);
@@ -182,14 +185,14 @@ public class TileEntityNewWorkbench extends TileEntity implements IInventory {
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
 
-        NBTTagList list = nbt.getTagList("Items", 10);
-        for (int i = 0; i < list.tagCount(); ++i) {
+        NBTTagList list = nbt.getTagList("Items", Constants.NBT.TAG_COMPOUND);
+        for (int i = 0; i < list.tagCount(); i++) {
             NBTTagCompound stackTag = list.getCompoundTagAt(i);
-            int slot = stackTag.getByte("Slot") & 255;
+            int slot = stackTag.getByte("Slot"); // & 255;
             this.setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(stackTag));
         }
 
-        if (nbt.hasKey("CustomName", 8)) {
+        if (nbt.hasKey("CustomName")) {
             this.setCustomName(nbt.getString("CustomName"));
         }
     }

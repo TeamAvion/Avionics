@@ -30,10 +30,10 @@ public class TinyChestContainer extends Container {
 //        }
 //    };
 
-    private World worldObj;
+//    private World worldObj;
 
-    public TinyChestContainer(InventoryPlayer playerInventory, IInventory chestInventory, World worldIn) {
-        this.worldObj = worldIn;
+    public TinyChestContainer(InventoryPlayer playerInventory, IInventory chestInventory/* , World worldIn */) {
+        // this.worldObj = worldIn;
         this.addSlotToContainer(new Slot(chestInventory, 0, 80, 34));
         for (int k = 0; k < 3; ++k) { //k = y
             for (int i1 = 0; i1 < 9; ++i1) { //i1 = x
@@ -64,47 +64,31 @@ public class TinyChestContainer extends Container {
     }
 
     public void onContainerClosed(EntityPlayer playerIn) {
-
     }
 
+    @Override
     @Nullable
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack itemstack = null;
-        Slot slot = (Slot) this.inventorySlots.get(index);
+        Slot slot = this.inventorySlots.get(index);
 
-        if (slot != null && slot.getHasStack()) {
+        if ((slot != null) && slot.getHasStack()) {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
 
-            if (index == 0) {
-                if (!this.mergeItemStack(itemstack1, 10, 46, true)) {
+            if (index < 1) {
+                if (!this.mergeItemStack(itemstack1, 1, this.inventorySlots.size(), true)) {
                     return null;
                 }
-
-                slot.onSlotChange(itemstack1, itemstack);
-            } else if (index >= 10 && index < 37) {
-                if (!this.mergeItemStack(itemstack1, 37, 46, false)) {
-                    return null;
-                }
-            } else if (index >= 37 && index < 46) {
-                if (!this.mergeItemStack(itemstack1, 10, 37, false)) {
-                    return null;
-                }
-            } else if (!this.mergeItemStack(itemstack1, 10, 46, false)) {
+            } else if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
                 return null;
             }
 
             if (itemstack1.stackSize == 0) {
-                slot.putStack((ItemStack) null);
+                slot.putStack(null);
             } else {
                 slot.onSlotChanged();
             }
-
-            if (itemstack1.stackSize == itemstack.stackSize) {
-                return null;
-            }
-
-            slot.onPickupFromSlot(playerIn, itemstack1);
         }
 
         return itemstack;

@@ -22,33 +22,41 @@ import net.minecraftforge.items.SlotItemHandler;
 
 public class ContainerNewWorkbench extends Container {
 
-    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
+    public InventoryCrafting craftMatrix; // = new InventoryCrafting(this, 3, 3);
     public IInventory craftResult = new InventoryCraftResult();
-    public ItemStackHandler bookSlot = new ItemStackHandler() {
-        @Override
-        public void setStackInSlot(int slot, ItemStack stack) {
-            if (false == ContainerNewWorkbench.this.isValidBook(stack)) {
-                return;
-            }
-            super.setStackInSlot(slot, stack);
-            ContainerNewWorkbench.this.onCraftMatrixChanged(ContainerNewWorkbench.this.craftMatrix);
-        }
-
-        @Override
-        public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-            if (false == ContainerNewWorkbench.this.isValidBook(stack)) {
-                return stack;
-            }
-            ItemStack result = super.insertItem(slot, stack, simulate);
-            ContainerNewWorkbench.this.onCraftMatrixChanged(ContainerNewWorkbench.this.craftMatrix);
-            return result;
-        }
-    };
+//    public ItemStackHandler bookSlot = new ItemStackHandler() {
+//        @Override
+//        public void setStackInSlot(int slot, ItemStack stack) {
+//            if (false == ContainerNewWorkbench.this.isValidBook(stack)) {
+//                return;
+//            }
+//            super.setStackInSlot(slot, stack);
+//            ContainerNewWorkbench.this.onCraftMatrixChanged(ContainerNewWorkbench.this.craftMatrix);
+//        }
+//
+//        @Override
+//        public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+//            if (false == ContainerNewWorkbench.this.isValidBook(stack)) {
+//                return stack;
+//            }
+//            ItemStack result = super.insertItem(slot, stack, simulate);
+//            ContainerNewWorkbench.this.onCraftMatrixChanged(ContainerNewWorkbench.this.craftMatrix);
+//            return result;
+//        }
+//    };
+    private Slot bookSlot;
 
     private World worldObj;
 
-    public ContainerNewWorkbench(InventoryPlayer playerInventory, World worldIn) {
+    public ContainerNewWorkbench(InventoryPlayer playerInventory, TileEntityNewWorkbench workbench, World worldIn) {
         this.worldObj = worldIn;
+        this.addSlotToContainer(this.bookSlot = new Slot(workbench, 0, 8, 35) {
+            @Override
+            public boolean isItemValid(@Nullable ItemStack stack) {
+                return ContainerNewWorkbench.this.isValidBook(stack);
+            }
+        });
+        this.craftMatrix = new NewWorkbenchCraftingMatrix(workbench, 1, this, 3, 3);
         this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
 
         for (int i = 0; i < 3; ++i) { //i = y
@@ -69,7 +77,7 @@ public class ContainerNewWorkbench extends Container {
 
         this.onCraftMatrixChanged(this.craftMatrix);
 
-        this.addSlotToContainer(new SlotItemHandler(this.bookSlot, 0, 8, 35));
+        // this.addSlotToContainer(new SlotItemHandler(this.bookSlot, 0, 8, 35));
     }
 
     private boolean isValidBook(ItemStack stack) {
@@ -82,7 +90,7 @@ public class ContainerNewWorkbench extends Container {
 
     public void onCraftMatrixChanged(IInventory inventoryIn) {
         ItemStack toCraft = null;
-        if (this.isValidBook(this.bookSlot.getStackInSlot(0))) {
+        if (this.isValidBook(this.bookSlot.getStack())) {
             // only handle custom recipes if we have a book
             toCraft = WorkbenchCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj);
         }
@@ -103,28 +111,28 @@ public class ContainerNewWorkbench extends Container {
         return super.getSlotFromInventory(inv, slotIn);
     }
 
-    public void onContainerClosed(EntityPlayer playerIn) {
-        super.onContainerClosed(playerIn);
-
-        if (!this.worldObj.isRemote) {
-            for (int i = 0; i < 9; ++i) {
-                ItemStack itemstack = this.craftMatrix.removeStackFromSlot(i);
-
-                if (itemstack != null) {
-                    playerIn.dropItem(itemstack, false);
-                }
-            }
-            ItemStack bookStack = this.bookSlot.getStackInSlot(0);
-            if (bookStack != null) {
-                playerIn.dropItem(bookStack, false);
-            }
-        }
-    }
+//    public void onContainerClosed(EntityPlayer playerIn) {
+//        super.onContainerClosed(playerIn);
+//
+//        if (!this.worldObj.isRemote) {
+//            for (int i = 0; i < 9; ++i) {
+//                ItemStack itemstack = this.craftMatrix.removeStackFromSlot(i);
+//
+//                if (itemstack != null) {
+//                    playerIn.dropItem(itemstack, false);
+//                }
+//            }
+//            ItemStack bookStack = this.bookSlot.getStackInSlot(0);
+//            if (bookStack != null) {
+//                playerIn.dropItem(bookStack, false);
+//            }
+//        }
+//    }
 
     @Nullable
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack itemstack = null;
-        Slot slot = (Slot) this.inventorySlots.get(index);
+        Slot slot = this.inventorySlots.get(index);
 
         if (slot != null && slot.getHasStack()) {
             ItemStack itemstack1 = slot.getStack();
