@@ -4,31 +4,22 @@ package com.collinriggs.avionics.test;
  * Created by Deathly on 11/12/2016.
  */
 
+import com.collinriggs.avionics.Avionics;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
-
-import javax.annotation.Nullable;
-
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.common.util.Constants;
 
 import javax.annotation.Nullable;
 
@@ -38,6 +29,11 @@ public class TileTinyChest extends TileEntity implements IInventory {
 
     public TileTinyChest() {
         this.inventory = new ItemStack[this.getSizeInventory()];
+    }
+
+    @Override
+    public void setPos(BlockPos pos) {
+        super.setPos(pos);
     }
 
     public String getCustomName() {
@@ -179,6 +175,8 @@ public class TileTinyChest extends TileEntity implements IInventory {
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
+        nbt = super.writeToNBT(nbt);
+
         NBTTagList list = new NBTTagList();
         for (int i = 0; i < this.getSizeInventory(); ++i) {
             if (this.getStackInSlot(i) != null) {
@@ -188,11 +186,12 @@ public class TileTinyChest extends TileEntity implements IInventory {
                 list.appendTag(stackTag);
             }
         }
-        nbt.setTag("Items", list);
+        nbt.setTag("Avionics.Items", list);
 
         if (this.hasCustomName()) {
-            nbt.setString("CustomName", this.getCustomName());
+            nbt.setString("Avionics.CustomName", this.getCustomName());
         }
+
         return nbt;
     }
 
@@ -200,15 +199,15 @@ public class TileTinyChest extends TileEntity implements IInventory {
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
 
-        NBTTagList list = nbt.getTagList("Items", 10);
+        NBTTagList list = nbt.getTagList("Avionics.Items", Constants.NBT.TAG_COMPOUND);
         for (int i = 0; i < list.tagCount(); ++i) {
             NBTTagCompound stackTag = list.getCompoundTagAt(i);
             int slot = stackTag.getByte("Slot") & 255;
             this.setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(stackTag));
         }
 
-        if (nbt.hasKey("CustomName", 8)) {
-            this.setCustomName(nbt.getString("CustomName"));
+        if (nbt.hasKey("Avionics.CustomName", 8)) {
+            this.setCustomName(nbt.getString("Avionics.CustomName"));
         }
     }
 
