@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import org.apache.logging.log4j.Logger;
 
 @Mod(modid = Ref.modid, name = Ref.modname, version = Ref.version)
 public class Avionics {
@@ -25,8 +26,11 @@ public class Avionics {
 	@SidedProxy(clientSide = "com.collinriggs.avionics.proxy.ClientProxy", serverSide = "com.collinriggs.avionics.proxy.ServerProxy")
 	public static CommonProxy proxy;
 
+	public static Logger logger;
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		logger = event.getModLog();
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 
 		config.load();

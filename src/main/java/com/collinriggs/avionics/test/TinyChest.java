@@ -3,13 +3,11 @@ package com.collinriggs.avionics.test;
 /**
  * Created by Deathly on 11/12/2016.
  */
-import javax.annotation.Nullable;
 
 import com.collinriggs.avionics.Avionics;
-
 import com.collinriggs.avionics.blocks.GuiHandler;
-import com.collinriggs.avionics.blocks.TileEntityNewWorkbench;
 import net.minecraft.block.Block;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -28,7 +26,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class TinyChest extends Block {
+import javax.annotation.Nullable;
+
+public class TinyChest extends Block implements ITileEntityProvider {
 
     public TinyChest() {
         super(Material.ROCK);
@@ -43,6 +43,7 @@ public class TinyChest extends Block {
 
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
+        GameRegistry.registerTileEntity(TileTinyChest.class, this.getRegistryName() + "_tile");
     }
 
     @SideOnly(Side.CLIENT)
@@ -51,13 +52,14 @@ public class TinyChest extends Block {
     }
 
     @Override
-    public TileEntity createTileEntity(World world, IBlockState state) {
+    public TileEntity createNewTileEntity(World world, int meta) {
         return new TileTinyChest();
     }
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-        if (!worldIn.isRemote) {playerIn.openGui(Avionics.instance, GuiHandler.GUI_TINYCHEST, worldIn, pos.getX(), pos.getY(), pos.getZ());
+        if (!worldIn.isRemote) {
+            playerIn.openGui(Avionics.instance, GuiHandler.GUI_TINYCHEST, worldIn, pos.getX(), pos.getY(), pos.getZ());
         }
         return true;
     }
