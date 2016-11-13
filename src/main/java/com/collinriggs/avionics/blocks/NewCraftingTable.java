@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import com.collinriggs.avionics.Avionics;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -23,7 +24,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class NewCraftingTable extends Block {
+public class NewCraftingTable extends Block implements ITileEntityProvider {
     // TileEntityNewWorkbench tileEntityWorkbench;
 
     public NewCraftingTable() {
@@ -39,6 +40,7 @@ public class NewCraftingTable extends Block {
 
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
+        GameRegistry.registerTileEntity(TileEntityNewWorkbench.class, this.getRegistryName() + "_tile");
     }
 
     @SideOnly(Side.CLIENT)
@@ -47,7 +49,7 @@ public class NewCraftingTable extends Block {
     }
 
     @Override
-    public TileEntity createTileEntity(World world, IBlockState state) {
+    public TileEntity createNewTileEntity(World worldIn, int meta) {
         return new TileEntityNewWorkbench(); // tileEntityWorkbench;
     }
 

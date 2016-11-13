@@ -29,7 +29,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 
 public class TinyChest extends Block implements ITileEntityProvider {
-
     public TinyChest() {
         super(Material.ROCK);
 
