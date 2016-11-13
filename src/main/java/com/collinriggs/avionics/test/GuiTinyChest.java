@@ -15,8 +15,8 @@ import net.minecraft.world.World;
 public class GuiTinyChest extends GuiContainer {
     private static final ResourceLocation TINYBENCH_GUI = new ResourceLocation("avionics:textures/gui/dirtcontainer.png");
 
-    public GuiTinyChest(InventoryPlayer playerInventory, IInventory chestInventory, World worldIn) {
-        super(new TinyChestContainer(playerInventory, chestInventory, worldIn));
+    public GuiTinyChest(InventoryPlayer playerInventory, IInventory chestInventory) { //}, World worldIn) {
+        super(new TinyChestContainer(playerInventory, chestInventory)); // , worldIn));
         this.xSize = 176;
         this.ySize = 165;
     }

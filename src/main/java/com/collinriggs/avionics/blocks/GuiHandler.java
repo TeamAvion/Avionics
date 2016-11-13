@@ -25,7 +25,7 @@ public class GuiHandler implements IGuiHandler {
             Avionics.logger.info("Looking for tiny chest at: " + pos.toString());
             TileEntity entity = world.getTileEntity(pos);
             if (entity instanceof IInventory) {
-                return new TinyChestContainer(player.inventory, (IInventory)entity, world);
+                return new TinyChestContainer(player.inventory, (IInventory)entity); //, world);
             }
         }
         return null;
@@ -39,7 +39,7 @@ public class GuiHandler implements IGuiHandler {
         if (id == GUI_TINYCHEST) {
             TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
             if (entity instanceof IInventory) {
-                return new GuiTinyChest(player.inventory, (IInventory) entity, world);
+                return new GuiTinyChest(player.inventory, (IInventory) entity); // , world);
             }
         }
         return null;
