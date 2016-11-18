@@ -10,8 +10,8 @@ import net.minecraft.world.World;
 public class GuiNewWorkbench extends GuiContainer {
     private static final ResourceLocation ARP_WORKBENCH_GUI_TEXTURES = new ResourceLocation("avionics:textures/gui/container/gui_workbench.png");
 
-    public GuiNewWorkbench(InventoryPlayer playerInv, World worldIn) {
-        super(new ContainerNewWorkbench(playerInv, worldIn));
+    public GuiNewWorkbench(InventoryPlayer playerInv, TileEntityNewWorkbench tileEntity, World worldIn) {
+        super(new ContainerNewWorkbench(playerInv, tileEntity, worldIn));
         this.xSize = 176;
         this.ySize = 165;
     }
