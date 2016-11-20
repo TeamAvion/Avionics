@@ -5,6 +5,7 @@ package com.collinriggs.avionics.test;
  */
 
 import com.collinriggs.avionics.Avionics;
+import com.collinriggs.avionics.Ref;
 import com.collinriggs.avionics.blocks.GuiHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -40,12 +41,13 @@ public class TinyChest extends Block implements ITileEntityProvider {
         setHarvestLevel("pickaxe", 2);
         setRegistryName("Tinychest");
 
-        setCreativeTab(CreativeTabs.MISC);
+        setCreativeTab(Ref.avionictab);
 
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
         GameRegistry.registerTileEntity(TileTinyChest.class, this.getRegistryName() + "_tile");
     }
+
 
     @SideOnly(Side.CLIENT)
     public void initModel() {

@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import com.collinriggs.avionics.Avionics;
 
+import com.collinriggs.avionics.Ref;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -38,7 +39,7 @@ public class NewCraftingTable extends Block implements ITileEntityProvider {
         setHarvestLevel("pickaxe", 1);
         setRegistryName("Avionworkbench");
 
-        setCreativeTab(CreativeTabs.MISC);
+        setCreativeTab(Ref.avionictab);
 
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());

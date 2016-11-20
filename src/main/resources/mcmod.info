@@ -3,7 +3,7 @@
   "modid": "avionics",
   "name": "Avionics",
   "description": "This is a mod that tweaks certain gameplay mechanics and adds a custom crafting table as well as new Crafting Mechanics! Special thanks to Tacomundu12 for textures!",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "mcversion": "${mcversion}",
   "url": "https://github.com/ADeathyTouch/Avionics",
   "updateUrl": "",

@@ -12,25 +12,26 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nullable;
 
 public class TinyChestContainer extends Container {
-//
-//    public ItemStackHandler itemSlot = new ItemStackHandler() {
-//        @Override
-//        public void setStackInSlot(int slot, ItemStack stack) {
-//            super.setStackInSlot(slot, stack);
-//        }
-//
-//        @Override
-//        public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-//            ItemStack result = super.insertItem(slot, stack, simulate);
-//            return result;
-//        }
-//    };
 
-//    private World worldObj;
+    public ItemStackHandler itemSlot = new ItemStackHandler() {
+        @Override
+        public void setStackInSlot(int slot, ItemStack stack) {
+            super.setStackInSlot(slot, stack);
+        }
+
+        @Override
+        public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+            ItemStack result = super.insertItem(slot, stack, simulate);
+            return result;
+        }
+    };
+
+    private World worldObj;
 
     public TinyChestContainer(InventoryPlayer playerInventory, IInventory chestInventory/* , World worldIn */) {
         // this.worldObj = worldIn;
@@ -44,10 +45,6 @@ public class TinyChestContainer extends Container {
         for (int l = 0; l < 9; ++l) { //l = x
             this.addSlotToContainer(new Slot(playerInventory, l, 8 + l * 18, 142));
         }
-    }
-
-    private boolean isValidBook(ItemStack stack) {
-        return (stack != null) && (stack.getItem() == Items.BOOK);
     }
 
     public boolean canInteractWith(EntityPlayer playerIn) {
