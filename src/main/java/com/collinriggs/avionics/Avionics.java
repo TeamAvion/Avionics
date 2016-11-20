@@ -1,5 +1,6 @@
 package com.collinriggs.avionics;
 
+import com.collinriggs.avionics.Items.ModItems;
 import com.collinriggs.avionics.blocks.GuiHandler;
 import com.collinriggs.avionics.proxy.CommonProxy;
 
@@ -40,6 +41,7 @@ public class Avionics {
 
 		config.save();
 		proxy.preInit(event);
+		ModItems.preInit();
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 	}

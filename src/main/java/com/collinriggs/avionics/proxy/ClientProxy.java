@@ -1,5 +1,6 @@
 package com.collinriggs.avionics.proxy;
 
+import com.collinriggs.avionics.Items.ModItems;
 import com.collinriggs.avionics.blocks.ModBlocks;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -12,11 +13,13 @@ public class ClientProxy extends CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
         super.preInit(e);
         ModBlocks.initModels();
+
     }
 
     @Override
     public void init(FMLInitializationEvent e) {
         super.init(e);
+        ModItems.registerRenders();
     }
 
     @Override

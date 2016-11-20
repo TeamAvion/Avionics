@@ -20,10 +20,11 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nullable;
 
-public class TileTinyChest extends TileEntity implements IInventory {
+public class TileTinyChest extends TileEntity implements IInventory, IItemHandler {
     public ItemStack[] inventory;
     public String customName;
 
@@ -61,7 +62,12 @@ public class TileTinyChest extends TileEntity implements IInventory {
 
     @Override
     public int getSizeInventory() {
-        return 11;
+        return 1;
+    }
+
+    @Override
+    public int getSlots() {
+        return 0;
     }
 
     @Override
@@ -71,6 +77,16 @@ public class TileTinyChest extends TileEntity implements IInventory {
             return null;
         }
         return this.inventory[index];
+    }
+
+    @Override
+    public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+        return null;
+    }
+
+    @Override
+    public ItemStack extractItem(int slot, int amount, boolean simulate) {
+        return null;
     }
 
 //    public ItemStack[] getInventory() {
