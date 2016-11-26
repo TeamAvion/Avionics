@@ -5,6 +5,7 @@
 package com.collinriggs.avionics.jeicompat;
 
 import com.collinriggs.avionics.Constants;
+import com.collinriggs.avionics.Items.ModItems;
 import com.collinriggs.avionics.blocks.ContainerNewWorkbench;
 import com.collinriggs.avionics.blocks.GuiNewWorkbench;
 import com.collinriggs.avionics.blocks.ModBlocks;
@@ -58,6 +59,7 @@ public class AvionicsPlugin extends BlankModPlugin {
 
     private void addDescription(@Nonnull IModRegistry registry, Block block, String description) {
         registry.addDescription(new ItemStack(block), description);
+        registry.addDescription(new ItemStack(ModItems.compressedenderpearl), "Go Farther!");
     }
 
 
