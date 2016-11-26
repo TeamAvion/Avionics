@@ -31,6 +31,7 @@ public class TinyChestContainer extends Container {
         }
     };
 
+
     private World worldObj;
 
     public TinyChestContainer(InventoryPlayer playerInventory, IInventory chestInventory/* , World worldIn */) {

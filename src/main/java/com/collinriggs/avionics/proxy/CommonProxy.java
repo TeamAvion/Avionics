@@ -58,7 +58,18 @@ public class CommonProxy {
                 Block block = state.getBlock();
                 if (block != null) {
                     if ((Avionics.disableFurnace && ((block == Blocks.FURNACE) || (block.getRegistryName().equals(Blocks.FURNACE.getRegistryName()))))
-                            || (Avionics.disableCraftingTable && ((block == Blocks.CRAFTING_TABLE) || (block.getRegistryName().equals(Blocks.CRAFTING_TABLE.getRegistryName().equals(Blocks.CRAFTING_TABLE.setUnlocalizedName("Disabled"))))))) {
+                            || (Avionics.disableCraftingTable && ((block == Blocks.CRAFTING_TABLE) || (block.getRegistryName().equals(Blocks.CRAFTING_TABLE.getRegistryName()))))) {
+                        e.setCanceled(true);
+                        this.log.info("Denied access to: '" + block.getRegistryName() + "'.");
+                    }
+                }
+            }
+            IBlockState state1 = e.getWorld().getBlockState(e.getPos());
+            if (state != null) {
+                Block block = state.getBlock();
+                if (block != null) {
+                    if ((Avionics.disableFurnace && ((block == Blocks.FURNACE) || (block.getRegistryName().equals(Blocks.FURNACE.setUnlocalizedName("disabled")))))
+                            || (Avionics.disableCraftingTable && ((block == Blocks.CRAFTING_TABLE) || (block.getRegistryName().equals(Blocks.CRAFTING_TABLE.setUnlocalizedName("Disabled")))))) {
                         e.setCanceled(true);
                         this.log.info("Denied access to: '" + block.getRegistryName() + "'.");
                     }
