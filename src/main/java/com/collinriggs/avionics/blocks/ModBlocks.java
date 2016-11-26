@@ -1,8 +1,16 @@
 package com.collinriggs.avionics.blocks;
 
 
+<<<<<<< HEAD
 import com.collinriggs.avionics.blocks.designerblocks.*;
+=======
+>>>>>>> refs/remotes/origin/master
 import com.collinriggs.avionics.test.TinyChest;
+import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 

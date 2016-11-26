@@ -18,7 +18,11 @@ public class Ref {
 	public static final String
 			modid = "avionics",
             modname = "Avionics",
+<<<<<<< HEAD
             version = "1.0.4";
+=======
+            version = "1.0.2";
+>>>>>>> refs/remotes/origin/master
 
 		public static final CreativeTabs avionictab= new CreativeTabs("avionictab") {
 			@Override public Item getTabIconItem() {

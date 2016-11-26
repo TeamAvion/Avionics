@@ -2,6 +2,7 @@ tile.avionictable.name=Avionic Table
 container.avionics.workbench=Avionic Table
 container.avionics.inventory=Inventory
 tile.Disabled.name=Disabled
+<<<<<<< HEAD
 tile.disabled.name=Disabled
 container.avionics.tinychest=Tiny Crate
 tile.tinychest.name=Tiny Crate
@@ -27,3 +28,9 @@ tile.purepink.name=Pure Pink Block
 tile.purered.name=Pure Red Block
 tile.pureyellow.name=Pure Yellow Block
 tile.purebrown.name=Pure Brown Block
+=======
+container.avionics.tinychest=Tiny Crate
+tile.tinychest.name=Tiny Crate
+itemGroup.avionictab=Avionics
+item.tavionlogo.name=Team Avion
+>>>>>>> refs/remotes/origin/master

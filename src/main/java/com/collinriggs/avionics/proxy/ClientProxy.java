@@ -15,14 +15,18 @@ public class ClientProxy extends CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
         super.preInit(e);
         ModBlocks.initModels();
+
     }
 
     @Override
     public void init(FMLInitializationEvent e) {
         super.init(e);
         ModItems.registerRenders();
+<<<<<<< HEAD
         ModRecipes.init();
         ModOreDict.registerOeDictEntries();
+=======
+>>>>>>> refs/remotes/origin/master
     }
 
     @Override
