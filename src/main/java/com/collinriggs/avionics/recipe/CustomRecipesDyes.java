@@ -25,7 +25,7 @@ public class CustomRecipesDyes {
         manager.addShapelessRecipe(new ItemStack(Items.DYE, 1, EnumDyeColor.YELLOW.getDyeDamage()), new Object[] {new ItemStack(Blocks.YELLOW_FLOWER, 1, BlockFlower.EnumFlowerType.DANDELION.getMeta())});
         manager.addShapelessRecipe(new ItemStack(Items.DYE, 1, EnumDyeColor.RED.getDyeDamage()), new Object[] {new ItemStack(Blocks.RED_FLOWER, 1, BlockFlower.EnumFlowerType.POPPY.getMeta())});
         manager.addShapelessRecipe(new ItemStack(Items.DYE, 3, EnumDyeColor.WHITE.getDyeDamage()), new Object[] {Items.BONE});
-        manager.addShapelessRecipe(new ItemStack(Items.DYE, 9, EnumDyeColor.WHITE.getDyeDamage()), new Object[] {Blocks.field_189880_di});
+       // manager.addShapelessRecipe(new ItemStack(Items.DYE, 9, EnumDyeColor.WHITE.getDyeDamage()), new Object[] {Blocks.field_189880_di});
         manager.addShapelessRecipe(new ItemStack(Items.DYE, 2, EnumDyeColor.PINK.getDyeDamage()), new Object[] {new ItemStack(Items.DYE, 1, EnumDyeColor.RED.getDyeDamage()), new ItemStack(Items.DYE, 1, EnumDyeColor.WHITE.getDyeDamage())});
         manager.addShapelessRecipe(new ItemStack(Items.DYE, 2, EnumDyeColor.ORANGE.getDyeDamage()), new Object[] {new ItemStack(Items.DYE, 1, EnumDyeColor.RED.getDyeDamage()), new ItemStack(Items.DYE, 1, EnumDyeColor.YELLOW.getDyeDamage())});
         manager.addShapelessRecipe(new ItemStack(Items.DYE, 2, EnumDyeColor.LIME.getDyeDamage()), new Object[] {new ItemStack(Items.DYE, 1, EnumDyeColor.GREEN.getDyeDamage()), new ItemStack(Items.DYE, 1, EnumDyeColor.WHITE.getDyeDamage())});

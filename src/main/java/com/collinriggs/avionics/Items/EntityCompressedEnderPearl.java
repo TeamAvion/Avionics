@@ -39,9 +39,9 @@ public class EntityCompressedEnderPearl extends EntityThrowable {
         super(worldIn, x, y, z);
     }
 
-    public static void func_189663_a(DataFixer p_189663_0_)
+    public static void registerFixesEnderPearl(DataFixer fixer)
     {
-        EntityThrowable.func_189661_a(p_189663_0_, "ThrownEnderpearl");
+        EntityThrowable.registerFixesThrowable(fixer, "ThrownEnderpearl");
     }
 
     /**

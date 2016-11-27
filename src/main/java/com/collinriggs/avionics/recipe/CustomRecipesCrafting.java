@@ -43,7 +43,7 @@ public class CustomRecipesCrafting {
         manager.addRecipe(new ItemStack(Blocks.REDSTONE_LAMP, 1), new Object[] {" R ", "RGR", " R ", 'R', Items.REDSTONE, 'G', Blocks.GLOWSTONE});
         manager.addRecipe(new ItemStack(Blocks.BEACON, 1), new Object[] {"GGG", "GSG", "OOO", 'G', Blocks.GLASS, 'S', Items.NETHER_STAR, 'O', Blocks.OBSIDIAN});
         manager.addRecipe(new ItemStack(Blocks.NETHER_BRICK, 1), new Object[] {"NN", "NN", 'N', Items.NETHERBRICK});
-        manager.addRecipe(new ItemStack(Blocks.field_189879_dh, 1), new Object[] {"NW", "WN", 'N', Items.NETHERBRICK, 'W', Items.NETHER_WART});
+       // manager.addRecipe(new ItemStack(Blocks.field_189879_dh, 1), new Object[] {"NW", "WN", 'N', Items.NETHERBRICK, 'W', Items.NETHER_WART});
         manager.addRecipe(new ItemStack(Blocks.STONE, 2, BlockStone.EnumType.DIORITE.getMetadata()), new Object[] {"CQ", "QC", 'C', Blocks.COBBLESTONE, 'Q', Items.QUARTZ});
         manager.addShapelessRecipe(new ItemStack(Blocks.STONE, 1, BlockStone.EnumType.GRANITE.getMetadata()), new Object[] {new ItemStack(Blocks.STONE, 1, BlockStone.EnumType.DIORITE.getMetadata()), Items.QUARTZ});
         manager.addShapelessRecipe(new ItemStack(Blocks.STONE, 2, BlockStone.EnumType.ANDESITE.getMetadata()), new Object[] {new ItemStack(Blocks.STONE, 1, BlockStone.EnumType.DIORITE.getMetadata()), Blocks.COBBLESTONE});
@@ -59,7 +59,7 @@ public class CustomRecipesCrafting {
         manager.addRecipe(new ItemStack(Blocks.PURPUR_STAIRS, 4, 0), new Object[] {"#  ", "## ", "###", '#', Blocks.PURPUR_BLOCK});
         manager.addRecipe(new ItemStack(Blocks.PURPUR_PILLAR, 1, 0), new Object[] {"#", "#", '#', Blocks.PURPUR_SLAB});
         manager.addRecipe(new ItemStack(Blocks.END_BRICKS, 4, 0), new Object[] {"##", "##", '#', Blocks.END_STONE});
-        manager.addRecipe(new ItemStack(Blocks.field_189877_df, 1, 0), new Object[] {"##", "##", '#', Items.MAGMA_CREAM});
-        manager.addRecipe(new ItemStack(Blocks.field_189878_dg, 1, 0), new Object[] {"###", "###", "###", '#', Items.NETHER_WART});
+       // manager.addRecipe(new ItemStack(Blocks.field_189877_df, 1, 0), new Object[] {"##", "##", '#', Items.MAGMA_CREAM});
+       // manager.addRecipe(new ItemStack(Blocks.field_189878_dg, 1, 0), new Object[] {"###", "###", "###", '#', Items.NETHER_WART});
     }
 }
