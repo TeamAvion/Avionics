@@ -138,21 +138,27 @@ public class ContainerNewWorkbench extends Container {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
 
+            //  0      : book
+            //  1 -  9 : crafting grid
+            // 10      : crafting result
+            // 11 - 37 : inventory
+            // 38 - 46 : hotbar
             if (index == 0) {
-                if (!this.mergeItemStack(itemstack1, 10, 46, true)) {
+                // handle book
+                if (!this.mergeItemStack(itemstack1, 11, 47, true)) {
                     return null;
                 }
 
                 slot.onSlotChange(itemstack1, itemstack);
-            } else if (index >= 10 && index < 37) {
-                if (!this.mergeItemStack(itemstack1, 37, 46, false)) {
+            } else if (index >= 11 && index <= 37) {
+                if (!this.mergeItemStack(itemstack1, 38, 47, true)) {
                     return null;
                 }
-            } else if (index >= 37 && index < 46) {
-                if (!this.mergeItemStack(itemstack1, 10, 37, false)) {
+            } else if (index >= 38 && index <= 46) {
+                if (!this.mergeItemStack(itemstack1, 11, 38, false)) {
                     return null;
                 }
-            } else if (!this.mergeItemStack(itemstack1, 10, 46, false)) {
+            } else if (!this.mergeItemStack(itemstack1, 11, 47, true)) {
                 return null;
             }
 
