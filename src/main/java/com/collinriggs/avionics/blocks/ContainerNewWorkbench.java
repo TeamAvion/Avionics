@@ -55,6 +55,12 @@ public class ContainerNewWorkbench extends Container {
             public boolean isItemValid(@Nullable ItemStack stack) {
                 return ContainerNewWorkbench.this.isValidBook(stack);
             }
+
+            @Override
+            public void onSlotChanged() {
+                super.onSlotChanged();
+                ContainerNewWorkbench.this.onCraftMatrixChanged(ContainerNewWorkbench.this.craftMatrix);
+            }
         });
         this.craftMatrix = new NewWorkbenchCraftingMatrix(workbench, 1, this, 3, 3);
         this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
