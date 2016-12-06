@@ -52,12 +52,6 @@ public class ContainerAvionicTable extends Container {
             public boolean isItemValid(@Nullable ItemStack stack) {
                 return ContainerAvionicTable.this.isValidBook(stack);
             }
-
-            @Override
-            public void onSlotChanged() {
-                super.onSlotChanged();
-                ContainerNewWorkbench.this.onCraftMatrixChanged(ContainerNewWorkbench.this.craftMatrix);
-            }
         });
         this.craftMatrix = new NewWorkbenchCraftingMatrix(workbench, 1, this, 3, 3);
         this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
@@ -151,13 +145,8 @@ public class ContainerAvionicTable extends Container {
             // 10      : crafting result
             // 11 - 37 : inventory
             // 38 - 46 : hotbar
-<<<<<<< HEAD:src/main/java/com/collinriggs/avionics/blocks/ContainerAvionicTable.java
 
             if (index == 0) {
-=======
-            if (index == 0) {
-                // handle book
->>>>>>> origin/master:src/main/java/com/collinriggs/avionics/blocks/ContainerNewWorkbench.java
                 if (!this.mergeItemStack(itemstack1, 11, 47, true)) {
                     return null;
                 }
