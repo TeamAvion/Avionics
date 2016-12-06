@@ -1,15 +1,22 @@
 tile.avionictable.name=Avionic Table
+tile.small_crate.name=Small Crate
+tile.tiny_crate.name=Tiny Crate
+
+#GUI NAMES
 container.avionics.workbench=Avionic Table
 container.avionics.inventory=Inventory
+container.avionics.tinycrate=Tiny Crate
+container.avionics.smallcrate=Small Crate
+itemGroup.avionictab=Avionics
+
 tile.Disabled.name=Disabled
 tile.disabled.name=Disabled
-container.avionics.tinychest=Tiny Crate
-tile.tinychest.name=Tiny Crate
-itemGroup.avionictab=Avionics
+
 #Items
 item.tavionlogo.name=Team Avion
 item.purifieddust.name=Purified Dust
 item.compressed_enderpearl.name=Compressed Ender Pearl
+
 #Colors
 tile.purewhite.name=Pure White Block
 tile.purelightgrey.name=Pure Lightgrey Block

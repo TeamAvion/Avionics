@@ -52,9 +52,12 @@ public class ModRecipes {
         GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.puremagenta, 8),"aaa","aya","aaa",'a', ModBlocks.purewhite,'y', new ItemStack(Items.DYE, 1, 13));
         GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.pureorange, 8),"aaa","aya","aaa",'a', ModBlocks.purewhite,'y', new ItemStack(Items.DYE, 1, 14));
         if (Avionics.enableTableRecipe == true) {
-            GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.newWorkbench),"aaa","byb","bbb",'a', Blocks.QUARTZ_BLOCK,'b', Blocks.LAPIS_BLOCK, 'y', Blocks.CRAFTING_TABLE);
+            GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.avionicTable),"aaa","byb","bbb",'a', Blocks.QUARTZ_BLOCK,'b', Blocks.LAPIS_BLOCK, 'y', Blocks.CRAFTING_TABLE);
+        }else {
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.avionicTable),"plankWood","plankWood","plankWood","plankWood"));
         }
-        GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.tinychest),"aaa","axa","aaa",'a', new ItemStack(Items.DYE, 1, 4));
+        GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.tinyCrate),"bab","aba","bab",'b', new ItemStack(Items.DYE, 1, 4), 'a', Items.IRON_INGOT);
+        GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.smallCrate), "aba","bab","aba",'a', new ItemStack(Items.DYE, 1,4), 'b', Blocks.OBSIDIAN);
 
         /**Items*/
         GameRegistry.addShapedRecipe(new ItemStack(ModItems.compressedenderpearl),"aax","aax","xxx",'a', Items.ENDER_PEARL);

@@ -1,10 +1,10 @@
-package com.collinriggs.avionics.blocks.designerblocks;
+package com.collinriggs.avionics.blocks;
 
 /**
- * Created by Deathly on 11/19/2016 at 9:39 PM.
+ * Created by Deathly on 11/29/2016 at 1:36 PM.
  */
+
 import com.collinriggs.avionics.Ref;
-import com.collinriggs.avionics.blocks.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -25,16 +25,16 @@ import javax.annotation.Nullable;
 import java.util.Random;
 
 /**
- * Created by Deathly on 11/19/2016.
+ * This is a base block that reacts to a Redstone Signal
  */
-public class PureGreen extends Block {
-    public PureGreen() {
+public class BaseRedActBlock extends Block {
+    public BaseRedActBlock() {
         super(Material.WOOD);
 
-        setUnlocalizedName("puregreen");
-        setResistance(100F);
-        setHardness(0.5F);
-        setRegistryName("puregreen");
+        setUnlocalizedName("");
+        setResistance(1000F);
+        setHardness(1F);
+        setRegistryName("");
         setHarvestLevel("pickaxe", 0);
 
         setCreativeTab(Ref.avionictab);
@@ -51,25 +51,30 @@ public class PureGreen extends Block {
     @Override
     public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn)
     {
-        if (worldIn.isBlockPowered(pos))
-        {
-            worldIn.setBlockState(pos, ModBlocks.puregreenlit.getDefaultState());
+        if (worldIn.isBlockPowered(pos)){
         }
         else {
-            worldIn.setBlockState(pos, ModBlocks.puregreen.getDefaultState());
         }
 
     }
 
     @Override
-    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 
-        if (worldIn.isBlockPowered(pos))
-        {
-            worldIn.setBlockState(pos, ModBlocks.puregreenlit.getDefaultState());
+        if (worldIn.isBlockPowered(pos)){
         }
         else {
-            worldIn.setBlockState(pos, ModBlocks.puregreen.getDefaultState());
+        }
+
+        return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer);
+    }
+
+    @Override
+    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+
+        if (worldIn.isBlockPowered(pos)){
+        }
+        else {
         }
         super.onBlockAdded(worldIn, pos, state);
     }
@@ -77,16 +82,18 @@ public class PureGreen extends Block {
     @Nullable
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
-        return Item.getItemFromBlock(ModBlocks.puregreen);
+        return Item.getItemFromBlock(this);
     }
 
     public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
     {
-        return new ItemStack(ModBlocks.puregreen);
+        return new ItemStack(this);
     }
 
     protected ItemStack createStackedBlock(IBlockState state)
     {
-        return new ItemStack(ModBlocks.puregreen);
+        return new ItemStack(this);
     }
+
+
 }

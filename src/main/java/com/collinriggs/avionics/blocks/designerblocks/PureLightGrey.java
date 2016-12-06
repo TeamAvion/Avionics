@@ -62,7 +62,8 @@ public class PureLightGrey extends Block {
     }
 
     @Override
-    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+
         if (worldIn.isBlockPowered(pos))
         {
             worldIn.setBlockState(pos, ModBlocks.purelightgreylit.getDefaultState());
@@ -70,9 +71,8 @@ public class PureLightGrey extends Block {
         else {
             worldIn.setBlockState(pos, ModBlocks.purelightgrey.getDefaultState());
         }
-        return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer);
+        super.onBlockAdded(worldIn, pos, state);
     }
-
     @Nullable
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {

@@ -5,8 +5,10 @@ import net.minecraft.item.ItemStack;
 
 public class ModWorkbenchRecipes {
 	
-	public void addRecipes(WorkbenchCraftingManager manager) {
-		manager.addRecipe(new ItemStack(Blocks.FURNACE), new Object[] {"MMM", "MMM", "MMM", 'M', Blocks.COBBLESTONE});
+	public void addRecipes(WorkbenchCraftingManager custommanager) {
+		custommanager.addRecipe(new ItemStack(Blocks.FURNACE), new Object[] {"MMM", "MaM", "MMM", 'M', Blocks.COBBLESTONE});
+		custommanager.addRecipe(new ItemStack(Blocks.COMMAND_BLOCK), new Object[] {"MMM", "MMM", "MMM", 'M', Blocks.DIRT});
+
 	}
 
 }

@@ -1,15 +1,14 @@
 package com.collinriggs.avionics.utils;
 
 import net.minecraftforge.fml.common.Loader;
-import com.collinriggs.avionics.jeicompat.ICompatibility;
-import com.collinriggs.avionics.utils.JustEnoughItemsCompatability;
+import com.collinriggs.avionics.compat.ICompatibility;
 
 import java.util.ArrayList;
 
 /**
  * Created by Deathly
  */
-public class ModCompatability {
+/*public class ModCompatability {
     private static ArrayList<ICompatibility> compatibilities = new ArrayList<ICompatibility>();
 
     public static void registerModCompat() {
@@ -21,4 +20,4 @@ public class ModCompatability {
             if (Loader.isModLoaded(compatibility.getMODID()) && compatibility.enableCompat())
                 compatibility.loadCompatibility(phase);
     }
-}
+}*/

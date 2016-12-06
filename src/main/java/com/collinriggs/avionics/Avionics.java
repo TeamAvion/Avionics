@@ -39,7 +39,7 @@ public class Avionics {
 
 		disableCraftingTable = config.getBoolean("disableCraftingTable", Configuration.CATEGORY_GENERAL, true, "Disables Crafting Table");
 		disableFurnace = config.getBoolean("disableFurnace", Configuration.CATEGORY_GENERAL, false, "Disables Furnace");
-		enableTableRecipe = config.getBoolean("enableTableRecipe", Configuration.CATEGORY_GENERAL, true, "Enables a Crafting Recipe for the Avionic Table");
+		enableTableRecipe = config.getBoolean("enableTableRecipe", Configuration.CATEGORY_GENERAL, false, "Enables custom Crafting Recipe for the Avionic Table. False makes it identical to the Vanilla Crafting Table Recipe.");
 
 		config.save();
 		proxy.preInit(event);

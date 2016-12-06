@@ -3,8 +3,8 @@ package com.collinriggs.avionics.proxy;
 import com.collinriggs.avionics.Avionics;
 import com.collinriggs.avionics.blocks.GuiHandler;
 import com.collinriggs.avionics.blocks.ModBlocks;
-import com.collinriggs.avionics.utils.ModCompatability;
-import com.collinriggs.avionics.jeicompat.ICompatibility;
+//import com.collinriggs.avionics.utils.ModCompatability;
+import com.collinriggs.avionics.compat.ICompatibility;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -24,20 +24,20 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
 
         ModBlocks.init();
-        ModCompatability.registerModCompat();
-        ModCompatability.loadCompat(ICompatibility.InitializationPhase.PRE_INIT);
+       // ModCompatability.registerModCompat();
+       // ModCompatability.loadCompat(ICompatibility.InitializationPhase.PRE_INIT);
         MinecraftForge.EVENT_BUS.register(new ServerEventsHandler(e.getModLog()));
     }
 
     public void init(FMLInitializationEvent e) {
 
         NetworkRegistry.INSTANCE.registerGuiHandler(Avionics.instance, new GuiHandler());
-        ModCompatability.loadCompat(ICompatibility.InitializationPhase.INIT);
+       // ModCompatability.loadCompat(ICompatibility.InitializationPhase.INIT);
     }
 
     public void postInit(FMLPostInitializationEvent e) {
 
-        ModCompatability.loadCompat(ICompatibility.InitializationPhase.POST_INIT);
+        //ModCompatability.loadCompat(ICompatibility.InitializationPhase.POST_INIT);
 
     }
     private class ServerEventsHandler {

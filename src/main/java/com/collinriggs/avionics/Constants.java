@@ -5,12 +5,11 @@
 package com.collinriggs.avionics;
 
 
+//import com.collinriggs.avionics.compat.AvionicRecipeCategory;
 
 /**
  * Created by Deathly
  */
 public class Constants {
-    public static class Compat {
-        public static final String JEI_CATEGORY_WORKBENCH = Ref.modid + ":benches";
-    }
+        public static final String AvionicRecipeCategoryUID = Ref.jei;
 }

@@ -1,17 +1,19 @@
-package com.collinriggs.avionics.blocks;
+package com.collinriggs.avionics.test;
 
-import javax.annotation.Nullable;
+/**
+ * Created by Deathly on 11/12/2016.
+ */
 
 import com.collinriggs.avionics.Avionics;
-
 import com.collinriggs.avionics.Ref;
+import com.collinriggs.avionics.blocks.GuiHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
@@ -26,25 +28,26 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 
-public class NewCraftingTable extends Block implements ITileEntityProvider {
-    public NewCraftingTable() {
+import javax.annotation.Nullable;
+
+public class TinyCrate extends Block implements ITileEntityProvider {
+    public TinyCrate() {
         super(Material.ROCK);
 
-        setUnlocalizedName("avionictable");
-        setResistance(1000.0F);
-        setHardness(10.0F);
-        setHarvestLevel("pickaxe", 1);
-        setRegistryName("Avionworkbench");
+        setUnlocalizedName("tiny_crate");
+        setResistance(6000000F);
+        setHardness(5F);
+        setHarvestLevel("pickaxe", 0);
+        setRegistryName("tinycrate");
 
         setCreativeTab(Ref.avionictab);
 
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
-        GameRegistry.registerTileEntity(TileEntityNewWorkbench.class, this.getRegistryName() + "_tile");
+        GameRegistry.registerTileEntity(TileTinyCrate.class, this.getRegistryName() + "_tile");
     }
+
 
     @SideOnly(Side.CLIENT)
     public void initModel() {
@@ -52,16 +55,40 @@ public class NewCraftingTable extends Block implements ITileEntityProvider {
     }
 
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileEntityNewWorkbench(); // tileEntityWorkbench;
+    public TileEntity createNewTileEntity(World world, int meta) {
+        return new TileTinyCrate();
     }
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (!worldIn.isRemote) {
-            playerIn.openGui(Avionics.instance, GuiHandler.GUI_WORKBENCH, worldIn, pos.getX(), pos.getY(), pos.getZ());
+            playerIn.openGui(Avionics.instance, GuiHandler.GUI_TINYCHEST, worldIn, pos.getX(), pos.getY(), pos.getZ());
         }
         return true;
+    }
+
+    @Override
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn)
+    {
+        super.neighborChanged(state, worldIn, pos, blockIn);
+        TileEntity tileentity = worldIn.getTileEntity(pos);
+
+        if (tileentity instanceof TileTinyCrate)
+        {
+            tileentity.updateContainingBlockInfo();
+        }
+    }
+
+    @Override
+    public boolean hasComparatorInputOverride(IBlockState state)
+    {
+        return true;
+    }
+
+    @Override
+    public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos)
+    {
+        return Container.calcRedstone(worldIn.getTileEntity(pos));
     }
 
     @Override

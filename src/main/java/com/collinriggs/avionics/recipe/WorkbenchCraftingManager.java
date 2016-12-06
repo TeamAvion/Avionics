@@ -47,6 +47,7 @@ public class WorkbenchCraftingManager {
 	public WorkbenchCraftingManager() {
 		this.addRecipe(new ItemStack(Blocks.COBBLESTONE, 1), new Object[] {"##", "##", '#', new ItemStack(Blocks.STONE_SLAB, 1, 3)});
 
+        (new ModWorkbenchRecipes()).addRecipes(this);
     	(new CustomRecipesTools()).addRecipes(this);
         (new CustomRecipesWeapons()).addRecipes(this);
         (new CustomRecipesIngots()).addRecipes(this);

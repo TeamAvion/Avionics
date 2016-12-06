@@ -62,7 +62,8 @@ public class PureMagenta extends Block {
     }
 
     @Override
-    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+
         if (worldIn.isBlockPowered(pos))
         {
             worldIn.setBlockState(pos, ModBlocks.puremagentalit.getDefaultState());
@@ -70,8 +71,7 @@ public class PureMagenta extends Block {
         else {
             worldIn.setBlockState(pos, ModBlocks.puremagenta.getDefaultState());
         }
-
-        return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer);
+        super.onBlockAdded(worldIn, pos, state);
     }
 
     @Nullable

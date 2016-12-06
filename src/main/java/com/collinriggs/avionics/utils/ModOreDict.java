@@ -1,6 +1,7 @@
 package com.collinriggs.avionics.utils;
 
 import com.collinriggs.avionics.blocks.ModBlocks;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
 import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
@@ -10,6 +11,7 @@ import static net.minecraftforge.oredict.OreDictionary.registerOre;
  */
 public class ModOreDict {
     public static void registerOeDictEntries() {
+        //Custom Adjustments
         registerOre("colorBrick", new ItemStack(ModBlocks.pureblue, 1));
         registerOre("colorBrick", new ItemStack(ModBlocks.purered, 1));
         registerOre("colorBrick", new ItemStack(ModBlocks.puregrey, 1));

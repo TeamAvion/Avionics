@@ -13,34 +13,31 @@ import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
-import net.minecraft.item.ItemBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
-import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerNewWorkbench extends Container {
+public class ContainerAvionicTable extends Container {
 
     public InventoryCrafting craftMatrix; // = new InventoryCrafting(this, 3, 3);
     public IInventory craftResult = new InventoryCraftResult();
 //    public ItemStackHandler bookSlot = new ItemStackHandler() {
 //        @Override
 //        public void setStackInSlot(int slot, ItemStack stack) {
-//            if (false == ContainerNewWorkbench.this.isValidBook(stack)) {
+//            if (false == ContainerAvionicTable.this.isValidBook(stack)) {
 //                return;
 //            }
 //            super.setStackInSlot(slot, stack);
-//            ContainerNewWorkbench.this.onCraftMatrixChanged(ContainerNewWorkbench.this.craftMatrix);
+//            ContainerAvionicTable.this.onCraftMatrixChanged(ContainerAvionicTable.this.craftMatrix);
 //        }
 //
 //        @Override
 //        public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-//            if (false == ContainerNewWorkbench.this.isValidBook(stack)) {
+//            if (false == ContainerAvionicTable.this.isValidBook(stack)) {
 //                return stack;
 //            }
 //            ItemStack result = super.insertItem(slot, stack, simulate);
-//            ContainerNewWorkbench.this.onCraftMatrixChanged(ContainerNewWorkbench.this.craftMatrix);
+//            ContainerAvionicTable.this.onCraftMatrixChanged(ContainerAvionicTable.this.craftMatrix);
 //            return result;
 //        }
 //    };
@@ -48,12 +45,12 @@ public class ContainerNewWorkbench extends Container {
 
     private World worldObj;
 
-    public ContainerNewWorkbench(InventoryPlayer playerInventory, TileEntityNewWorkbench workbench, World worldIn) {
+    public ContainerAvionicTable(InventoryPlayer playerInventory, TileEntityAvionicTable workbench, World worldIn) {
         this.worldObj = worldIn;
         this.addSlotToContainer(this.bookSlot = new Slot(workbench, 0, 8, 35) {
             @Override
             public boolean isItemValid(@Nullable ItemStack stack) {
-                return ContainerNewWorkbench.this.isValidBook(stack);
+                return ContainerAvionicTable.this.isValidBook(stack);
             }
         });
         this.craftMatrix = new NewWorkbenchCraftingMatrix(workbench, 1, this, 3, 3);
@@ -89,17 +86,22 @@ public class ContainerNewWorkbench extends Container {
     }
 
     public void onCraftMatrixChanged(IInventory inventoryIn) {
+
         ItemStack toCraft = null;
+
         if (this.isValidBook(this.bookSlot.getStack())) {
+
             // only handle custom recipes if we have a book
             toCraft = WorkbenchCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj);
-        }
-        if (toCraft == null)
+        }else if (toCraft == null)
+
         {
             // test for Vanilla Recipe
             toCraft = CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj);
         }
+
         this.craftResult.setInventorySlotContents(0, toCraft);
+
     }
 
     @Nullable
@@ -138,21 +140,27 @@ public class ContainerNewWorkbench extends Container {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
 
+            //  0      : book
+            //  1 -  9 : crafting grid
+            // 10      : crafting result
+            // 11 - 37 : inventory
+            // 38 - 46 : hotbar
+
             if (index == 0) {
-                if (!this.mergeItemStack(itemstack1, 10, 46, true)) {
+                if (!this.mergeItemStack(itemstack1, 11, 47, true)) {
                     return null;
                 }
 
                 slot.onSlotChange(itemstack1, itemstack);
-            } else if (index >= 10 && index < 37) {
-                if (!this.mergeItemStack(itemstack1, 37, 46, false)) {
+            } else if (index >= 11 && index <= 37) {
+                if (!this.mergeItemStack(itemstack1, 38, 47, true)) {
                     return null;
                 }
-            } else if (index >= 37 && index < 46) {
-                if (!this.mergeItemStack(itemstack1, 10, 37, false)) {
+            } else if (index >= 38 && index <= 46) {
+                if (!this.mergeItemStack(itemstack1, 11, 38, false)) {
                     return null;
                 }
-            } else if (!this.mergeItemStack(itemstack1, 10, 46, false)) {
+            } else if (!this.mergeItemStack(itemstack1, 11, 47, true)) {
                 return null;
             }
 

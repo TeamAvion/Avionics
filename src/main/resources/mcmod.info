@@ -3,7 +3,7 @@
   "modid": "avionics",
   "name": "Avionics",
   "description": "This is a mod can tweak certain gameplay mechanics, 16 different colored blocks that light up via Redstone signal, and an Enderpearl that goes farther! Also it has a 1 slot chest. Special thanks to Tacomundu12 for the crafting table textures!",
-  "version": "1.0.5,
+  "version": "1.0.8,
   "mcversion": "1.10.2",
   "url": "https://github.com/ADeathyTouch/Avionics",
   "updateUrl": "",

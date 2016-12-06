@@ -15,12 +15,4 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EventHandler {
 
-    @SubscribeEvent
-    public void  itemTooltip(ItemTooltipEvent event){
-        Block itemStack = Blocks.CRAFTING_TABLE;
-        if (event.getItemStack().getItem() == Items.APPLE) {
-            event.getToolTip().add("Disabled Via Config");
-        }
-    }
-
 }

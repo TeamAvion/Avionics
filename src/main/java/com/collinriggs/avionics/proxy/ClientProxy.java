@@ -4,6 +4,7 @@ import com.collinriggs.avionics.Items.ModItems;
 import com.collinriggs.avionics.blocks.ModBlocks;
 
 import com.collinriggs.avionics.recipe.ModRecipes;
+import com.collinriggs.avionics.recipe.ModWorkbenchRecipes;
 import com.collinriggs.avionics.utils.ModOreDict;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;

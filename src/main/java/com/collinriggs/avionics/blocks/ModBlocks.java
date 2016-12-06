@@ -2,14 +2,16 @@ package com.collinriggs.avionics.blocks;
 
 
 import com.collinriggs.avionics.blocks.designerblocks.*;
-import com.collinriggs.avionics.test.TinyChest;
+import com.collinriggs.avionics.test.SmallCrate;
+import com.collinriggs.avionics.test.TinyCrate;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ModBlocks {
 
-    public static NewCraftingTable newWorkbench;
-    public static TinyChest tinychest;
+    public static SmallCrate smallCrate;
+    public static AvionicTable avionicTable;
+    public static TinyCrate tinyCrate;
     public static PureWhite purewhite;
     public static PureBlack pureblack;
     public static PureGrey puregrey;
@@ -45,8 +47,9 @@ public class ModBlocks {
 
 
     public static void init() {
-        newWorkbench = new NewCraftingTable();
-        tinychest = new TinyChest();
+        smallCrate = new SmallCrate();
+        avionicTable = new AvionicTable();
+        tinyCrate = new TinyCrate();
         //Colors
         purewhite = new PureWhite();
         pureblack = new PureBlack();
@@ -86,8 +89,9 @@ public class ModBlocks {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
-        newWorkbench.initModel();
-        tinychest.initModel();
+        smallCrate.initModel();
+        avionicTable.initModel();
+        tinyCrate.initModel();
         //Colors
         purewhite.initModel();
         pureblack.initModel();

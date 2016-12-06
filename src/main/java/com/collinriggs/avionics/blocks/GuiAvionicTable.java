@@ -7,18 +7,18 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class GuiNewWorkbench extends GuiContainer {
+public class GuiAvionicTable extends GuiContainer {
     private static final ResourceLocation ARP_WORKBENCH_GUI_TEXTURES = new ResourceLocation("avionics:textures/gui/container/gui_workbench.png");
 
-    public GuiNewWorkbench(InventoryPlayer playerInv, TileEntityNewWorkbench tileEntity, World worldIn) {
-        super(new ContainerNewWorkbench(playerInv, tileEntity, worldIn));
+    public GuiAvionicTable(InventoryPlayer playerInv, TileEntityAvionicTable tileEntity, World worldIn) {
+        super(new ContainerAvionicTable(playerInv, tileEntity, worldIn));
         this.xSize = 176;
         this.ySize = 165;
     }
 
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        this.fontRendererObj.drawString(I18n.format("container.avionics.workbench", new Object[0]), 28, 6, 4210752);
-        this.fontRendererObj.drawString(I18n.format("container.avionics.inventory", new Object[0]), 8, this.ySize - 96 + 2, 4210752);
+        this.fontRendererObj.drawString(I18n.format("container.avionics.workbench", new Object[0]), 24, 6, 0x0000FF);
+        this.fontRendererObj.drawString(I18n.format("container.avionics.inventory", new Object[0]), 8, this.ySize - 96 + 2, 0x0000FF);
     }
 
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {

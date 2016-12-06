@@ -15,11 +15,11 @@ import net.minecraftforge.common.util.Constants;
 
 import javax.annotation.Nullable;
 
-public class TileEntityNewWorkbench extends TileEntity implements IInventory {
+public class TileEntityAvionicTable extends TileEntity implements IInventory {
     public ItemStack[] inventory;
     public String customName;
 
-    public TileEntityNewWorkbench() {
+    public TileEntityAvionicTable() {
         this.inventory = new ItemStack[this.getSizeInventory()];
     }
 

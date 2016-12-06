@@ -21,6 +21,7 @@ public class CustomRecipesCrafting {
      */
     public void addRecipes(WorkbenchCraftingManager manager)
     {
+
         manager.addRecipe(new ItemStack(Blocks.CHEST), new Object[] {"###", "# #", "###", '#', Blocks.PLANKS});
         manager.addShapelessRecipe(new ItemStack(Blocks.TRAPPED_CHEST), new Object[] {Blocks.CHEST, Blocks.TRIPWIRE_HOOK});
         manager.addRecipe(new ItemStack(Blocks.ENDER_CHEST), new Object[] {"###", "#E#", "###", '#', Blocks.OBSIDIAN, 'E', Items.ENDER_EYE});
