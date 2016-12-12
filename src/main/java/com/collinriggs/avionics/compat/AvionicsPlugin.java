@@ -4,7 +4,7 @@
 
 package com.collinriggs.avionics.compat;
 
-import com.collinriggs.avionics.Constants;
+//import com.collinriggs.avionics.Constants;
 import com.collinriggs.avionics.blocks.ContainerAvionicTable;
 import com.collinriggs.avionics.blocks.GuiAvionicTable;
 import com.collinriggs.avionics.blocks.ModBlocks;
@@ -22,7 +22,8 @@ import javax.annotation.Nonnull;
 /**
  * Created by Deathly
  */
-/*@JEIPlugin
+ /*
+@JEIPlugin
 public class AvionicsPlugin extends BlankModPlugin {
 
     @Override
@@ -60,4 +61,5 @@ public class AvionicsPlugin extends BlankModPlugin {
     }
 
 
-}*/
+}
+*/

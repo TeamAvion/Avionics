@@ -10,6 +10,6 @@ package com.collinriggs.avionics;
 /**
  * Created by Deathly
  */
-public class Constants {
-        public static final String AvionicRecipeCategoryUID = Ref.jei;
-}
+//public class Constants {
+//        public static final String AvionicRecipeCategoryUID = Ref.jei;
+//}

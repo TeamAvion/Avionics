@@ -1,75 +1,75 @@
 package com.collinriggs.avionics.compat;
 
-//import com.collinriggs.avionics.Constants;
+import com.collinriggs.avionics.blocks.ModBlocks;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.ICraftingGridHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.recipe.BlankRecipeCategory;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
-import mezz.jei.api.recipe.wrapper.ICraftingRecipeWrapper;
 import mezz.jei.api.recipe.wrapper.IShapedCraftingRecipeWrapper;
 import net.minecraft.client.Minecraft;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-import javax.annotation.Nonnull;
-
-//import static com.collinriggs.avionics.Constants.AvionicRecipeCategoryUID;
-
+import javax.annotation.Nullable;
 
 /**
- * Created by Deathly on 11/27/2016 at 6:20 PM.
+ * Created by Deathly on 12/12/2016 at 12:46 PM.
  */
-/*(
- public class AvionicRecipeCategory extends BlankRecipeCategory<ICraftingRecipeWrapper> {
-
-    public static final int width = 144;
-    public static final int height = 60;
+public class AvionCategory implements IRecipeCategory {
     private static final int craftOutputSlot = 0;
     private static final int craftInputSlot1 = 1;
 
     private final IDrawable background;
     private final ICraftingGridHelper craftingGridHelper;
 
-    public AvionicRecipeCategory(IGuiHelper iGuiHelper){
+
+    public AvionCategory(IGuiHelper iGuiHelper){
         final ResourceLocation GUI_AVIONIC = new ResourceLocation("avionics:textures/gui/container/gui_workbench.png");
         craftingGridHelper = iGuiHelper.createCraftingGridHelper(craftInputSlot1, craftOutputSlot);
         background = iGuiHelper.createDrawable(GUI_AVIONIC, 4,13,144,60);
-    }
-
-
+}
     @Override
     public String getUid() {
-        return AvionicRecipeCategoryUID;
+        return AvionUID.CRAFTING;
     }
-
 
     @Override
     public String getTitle() {
-        return ("Avionic Crafting");
+        return "Avionic Crafting";
     }
-
 
     @Override
     public IDrawable getBackground() {
         return background;
     }
 
+    @Nullable
     @Override
-    public void drawExtras(@Nonnull Minecraft minecraft) {
+    public IDrawable getIcon() {
+        return null;
+    }
+
+    @Override
+    public void drawExtras(Minecraft minecraft) {
 
     }
 
     @Override
-    public void drawAnimations(@Nonnull Minecraft minecraft) {
+    public void drawAnimations(Minecraft minecraft) {
 
     }
 
     @Override
-    public void setRecipe(IRecipeLayout recipeLayout, ICraftingRecipeWrapper recipeWrapper, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper) {
+
+    }
+
+    @Override
+    public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
         IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
 
         guiItemStacks.init(craftOutputSlot, false, 94, 18);
@@ -90,7 +90,4 @@ import javax.annotation.Nonnull;
             craftingGridHelper.setOutput(guiItemStacks, recipeWrapper.getOutputs());
         }
     }
-
 }
-*/
-

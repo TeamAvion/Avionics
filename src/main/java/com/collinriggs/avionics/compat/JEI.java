@@ -3,6 +3,7 @@ package com.collinriggs.avionics.compat;
 import com.collinriggs.avionics.Items.ModItems;
 import com.collinriggs.avionics.blocks.ModBlocks;
 import mezz.jei.api.*;
+import mezz.jei.api.ingredients.IModIngredientRegistration;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Optional;
 
@@ -11,9 +12,19 @@ import javax.annotation.Nonnull;
 /**
  * Created by Deathly on 11/25/2016 at 1:35 AM.
  */
-/*@Optional.Interface(iface = "mezz.jei.api.IItemBlacklist", modid = "JEI", striprefs = true)
+@Optional.Interface(iface = "mezz.jei.api.IItemBlacklist", modid = "JEI", striprefs = true)
 @JEIPlugin
 public class JEI implements IModPlugin {
+    @Override
+    public void registerItemSubtypes(ISubtypeRegistry subtypeRegistry) {
+
+    }
+
+    @Override
+    public void registerIngredients(IModIngredientRegistration registry) {
+
+    }
+
     @Optional.Method(modid = "JEI")
     public void register(@Nonnull IModRegistry registry) {
         IJeiHelpers helpers = registry.getJeiHelpers();
@@ -43,4 +54,3 @@ public class JEI implements IModPlugin {
 
     }
 }
-*/

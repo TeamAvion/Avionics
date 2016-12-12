@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the nessasary things for Forge to be setup.
 
 
-version = "1.10.2-1.0.5"
+version = "1.10.2-1.0.9"
 group= "com.collinriggs.avionics" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Avionics"
 
@@ -80,15 +80,24 @@ processResources
 idea { module { inheritOutputDirs = true } }
 
 repositories {
+
   maven {
     // location of the maven that hosts JEI files
     url = "http://dvs1.progwml6.com/files/maven"
   }
+  //Craft Tweaker/MT 3
+  maven { 
+        name 'jared maven'
+        url "http://blamejared.com/maven"
+    }
 }
 
 dependencies {
-  // compile against the JEI API
+
+  deobfCompile "MineTweaker3:MineTweaker3-API:3.0.14.59"
+  
   deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}:api"
-  // at runtime, use the full JEI jar
+  
   runtime "mezz.jei:jei_${mc_version}:${jei_version}"
+
 }

@@ -5,7 +5,7 @@ import com.collinriggs.avionics.compat.ICompatibility;
 /**
  * Created by Deathly
  */
-/*public class JustEnoughItemsCompatability implements ICompatibility {
+public class JustEnoughItemsCompatability implements ICompatibility {
     @Override
     public void loadCompatibility(InitializationPhase phase) {
     }
@@ -20,4 +20,4 @@ import com.collinriggs.avionics.compat.ICompatibility;
     public boolean enableCompat() {
         return true;
     }
-}*/
+}

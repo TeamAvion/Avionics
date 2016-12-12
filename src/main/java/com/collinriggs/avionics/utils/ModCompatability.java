@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by Deathly
  */
-/*public class ModCompatability {
+public class ModCompatability {
     private static ArrayList<ICompatibility> compatibilities = new ArrayList<ICompatibility>();
 
     public static void registerModCompat() {
@@ -20,4 +20,4 @@ import java.util.ArrayList;
             if (Loader.isModLoaded(compatibility.getMODID()) && compatibility.enableCompat())
                 compatibility.loadCompatibility(phase);
     }
-}*/
+}
