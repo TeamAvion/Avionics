@@ -1,49 +1,53 @@
 package com.collinriggs.avionics.blocks;
 
-
 import com.collinriggs.avionics.blocks.designerblocks.*;
 import com.collinriggs.avionics.test.SmallCrate;
+import com.collinriggs.avionics.test.TileSmallCrate;
+import com.collinriggs.avionics.test.TileTinyCrate;
 import com.collinriggs.avionics.test.TinyCrate;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 public class ModBlocks {
 
-    public static SmallCrate smallCrate;
-    public static AvionicTable avionicTable;
-    public static TinyCrate tinyCrate;
-    public static PureWhite purewhite;
-    public static PureBlack pureblack;
-    public static PureGrey puregrey;
-    public static PureLightGrey purelightgrey;
-    public static PureBrown purebrown;
-    public static PureBlue pureblue;
-    public static PureLightBlue purelightblue;
-    public static PureRed purered;
-    public static PureOrange pureorange;
-    public static PureGreen puregreen;
-    public static PureLime purelime;
-    public static PureCyan purecyan;
-    public static PurePink purepink;
-    public static PurePurple purepurple;
-    public static PureYellow pureyellow;
-    public static PureMagenta puremagenta;
-    public static PureBlackLit pureblacklit;
-    public static PureBlueLit purebluelit;
-    public static PureBrownLit purebrownlit;
-    public static PureYellowLit pureyellowlit;
-    public static PureWhiteLit purewhitelit;
-    public static PureRedLit pureredlit;
-    public static PurePinkLit purepinklit;
-    public static PurePurpleLit purepurplelit;
-    public static PureOrangeLit pureorangelit;
-    public static PureMagentaLit puremagentalit;
-    public static PureLimeLit purelimelit;
-    public static PureLightGreyLit purelightgreylit;
-    public static PureLightBlueLit purelightbluelit;
-    public static PureGreyLit puregreylit;
-    public static PureGreenLit puregreenlit;
-    public static PureCyanLit purecyanlit;
+    @Block @TileEntity(tileClass=TileSmallCrate.class, tileName="Small Crate")              public static SmallCrate smallCrate;
+    @Block @TileEntity(tileClass=TileEntityAvionicTable.class, tileName="Avionic Table")    public static AvionicTable avionicTable;
+    @Block @TileEntity(tileClass=TileTinyCrate.class, tileName="Tiny Crate")                public static TinyCrate tinyCrate;
+    @Block public static PureWhite purewhite;
+    @Block public static PureBlack pureblack;
+    @Block public static PureGrey puregrey;
+    @Block public static PureLightGrey purelightgrey;
+    @Block public static PureBrown purebrown;
+    @Block public static PureBlue pureblue;
+    @Block public static PureLightBlue purelightblue;
+    @Block public static PureRed purered;
+    @Block public static PureOrange pureorange;
+    @Block public static PureGreen puregreen;
+    @Block public static PureLime purelime;
+    @Block public static PureCyan purecyan;
+    @Block public static PurePink purepink;
+    @Block public static PurePurple purepurple;
+    @Block public static PureYellow pureyellow;
+    @Block public static PureMagenta puremagenta;
+    @Block public static PureBlackLit pureblacklit;
+    @Block public static PureBlueLit purebluelit;
+    @Block public static PureBrownLit purebrownlit;
+    @Block public static PureYellowLit pureyellowlit;
+    @Block public static PureWhiteLit purewhitelit;
+    @Block public static PureRedLit pureredlit;
+    @Block public static PurePinkLit purepinklit;
+    @Block public static PurePurpleLit purepurplelit;
+    @Block public static PureOrangeLit pureorangelit;
+    @Block public static PureMagentaLit puremagentalit;
+    @Block public static PureLimeLit purelimelit;
+    @Block public static PureLightGreyLit purelightgreylit;
+    @Block public static PureLightBlueLit purelightbluelit;
+    @Block public static PureGreyLit puregreylit;
+    @Block public static PureGreenLit puregreenlit;
+    @Block public static PureCyanLit purecyanlit;
 
 
     public static void init() {
@@ -89,43 +93,19 @@ public class ModBlocks {
 
     @SideOnly(Side.CLIENT)
     public static void initModels() {
-        smallCrate.initModel();
-        avionicTable.initModel();
-        tinyCrate.initModel();
-        //Colors
-        purewhite.initModel();
-        pureblack.initModel();
-        puregrey.initModel();
-        purelightgrey.initModel();
-        purebrown.initModel();
-        pureblue.initModel();
-        purelightblue.initModel();
-        purered.initModel();
-        pureorange.initModel();
-        puregreen.initModel();
-        purelime.initModel();
-        purecyan.initModel();
-        purepink.initModel();
-        purepurple.initModel();
-        pureyellow.initModel();
-        puremagenta.initModel();
-        //Lit Colors
-        pureblacklit.initModel();
-        puremagentalit.initModel();
-        pureyellowlit.initModel();
-        purebluelit.initModel();
-        puregreenlit.initModel();
-        purebrownlit.initModel();
-        purecyanlit.initModel();
-        purelightbluelit.initModel();
-        puregreylit.initModel();
-        purelightgreylit.initModel();
-        purepinklit.initModel();
-        pureorangelit.initModel();
-        purewhitelit.initModel();
-        purelimelit.initModel();
-        pureredlit.initModel();
-        purepurplelit.initModel();
+        // Initiate all models
+        ArrayList<Class<? extends net.minecraft.tileentity.TileEntity>> reg = new ArrayList<>();
+        Field[] f = ModBlocks.class.getDeclaredFields();
+        for(Field f1 : f)
+            if(f1.getAnnotation(Block.class)!=null)
+                try {
+                    f1.getType().getDeclaredMethod("initModel").invoke(f1.get(null));
+                    TileEntity a = f1.getAnnotation(TileEntity.class);
+                    if(a!=null && !reg.contains(a.tileClass())) {
+                        GameRegistry.registerTileEntity(a.tileClass(), a.tileName());
+                        reg.add(a.tileClass());
+                    }
+                } catch (Exception ignored) { }
     }
 
 }
